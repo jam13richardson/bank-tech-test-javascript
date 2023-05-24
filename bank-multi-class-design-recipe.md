@@ -94,32 +94,37 @@ const account = new BankAccount();
 account.withdraw("12/01/21", 1000);
 expect(account.transactions.length).toBe(1);
 
+const account = new BankAccount();
+account.deposit("12/01/21", 1000);
+expect(account.transactions.length).toBe(1);
 
-
-  it 'debit transaction is added to transactions array' do 
-        account = BankAccount.new
-        account.withdraw(1000)
-        expect(account.transactions.length).to eq(1)
-    end
-
-    it 'credit transaction is added to transactions array' do 
-        account = BankAccount.new
-        account.deposit(1000)
-        expect(account.transactions.length).to eq(1)
-    end
-
-    it 'calculates overall balance' do 
-        account = BankAccount.new
-        account.deposit(3000)
-        account.withdraw(1000)
-        expect(account.balance).to eq(2000)
-    end
-
-
+const account = new BankAccount();
+account.deposit("12/01/21", 1000)
+account.withdraw("12/01/21", 1000)
+expect(account.transactions.length).toBe(2)
 
 
 4. Create Examples as Unit Tests
 Create examples, where appropriate, of the behaviour of each relevant class at a more granular level of detail.
+
+test('debit transaction is added to transactions array', () => {
+const account = new BankAccount();
+account.withdraw("12/01/21", 1000);
+expect(account.transactions.length).toBe(1);
+});
+
+test('credit transaction is added to transactions array', () => {
+const account = new BankAccount();
+account.deposit("12/01/21", 1000);
+expect(account.transactions.length).toBe(1);
+});
+
+test('returns a list of all transactions', () => {
+const account = new BankAccount();
+account.deposit("12/01/21", 1000)
+account.withdraw("12/01/21", 1000)
+expect(account.transactions.length).toBe(2)
+});
 
 
 5. Implement the Behaviour
